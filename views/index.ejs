@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacts</title>
+  <link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Enter your contacts</h1>
+
+  <h2>Contacts</h2>
+  <ul class="contacts">
+  <% for(var i = 0; i < contacts.length; i++) { %>
+    <li class="contact">
+      <span class="contact-name"><%= contacts[i].name %></span>
+      <span class="contact-number"><%= contacts[i].number %></span> 
+      <span class="contact-email"><%= contacts[i].email %></span>
+      <span><i class="fa fa-trash" aria-hidden="true"></i></span>
+    </li>
+  <% } %>
+  </ul>
+
+  <h2>Add a contact</h2>
+  <form action="/contacts" method="POST">
+    <input type="text" placeholder="Contact name" name="name">
+    <input type="tel" placeholder="Contact phone number" name="number">
+    <input type="email" placeholder="Contact email" name="email">
+    <button type="submit">Submit</button>
+  </form>
+
+  <script src="main.js"></script>
+</body>
+</html>

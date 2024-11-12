@@ -14,7 +14,7 @@
   <h2>Contacts</h2>
   <ul class="contacts">
   <% for(var i = 0; i < contacts.length; i++) { %>
-    <li class="contact">
+    <li class="contact" data-id="<%= contacts[i]._id %>">
       <span class="contact-name"><%= contacts[i].name %></span>
       <span class="contact-number"><%= contacts[i].number %></span> 
       <span class="contact-email"><%= contacts[i].email %></span>

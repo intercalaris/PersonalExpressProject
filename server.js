@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const port = process.env.PORT || 8000;
+const { ObjectId, ServerApiVersion, MongoClient } = require('mongodb');
 
+const port = process.env.PORT || 8000;
 const uri = "mongodb+srv://ymaviv:sisma@cluster0.hlyzd.mongodb.net/personal-express-app?retryWrites=true&w=majority";
 const dbName = "personal-express-app";
 
-// Create MongoClient with static API version
 const client = new MongoClient(uri, {
     serverApi: {
         version: ServerApiVersion.v1,
@@ -15,17 +14,16 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-
+// https://stackoverflow.com/questions/12901593/remove-record-by-id 
 async function startServer() {
     try {
         console.log("Attempting to connect to MongoDB...");
         await client.connect();
         
-        // Confirm connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
         const db = client.db(dbName);
-        // Start server after successful connection
+
         app.listen(port, () => {
             console.log(`Server running at http://localhost:${port}`);
         });
@@ -38,7 +36,7 @@ async function startServer() {
         app.get('/', async (req, res) => {
             try {
                 const contactsResult = await db.collection('contacts').find().toArray();
-                res.render('index.ejs', { contacts: contactsResult }); // left contacts is how EJS file will refer to right contacts, the array const found in the collection
+                res.render('index.ejs', { contacts: contactsResult }); // left is how ejs references the array, right is constant established above 
             } catch (err) {
                 console.error(err);
             }
@@ -58,9 +56,10 @@ async function startServer() {
             }
         });
 
-        app.delete('/contacts', async (req, res) => {
+        app.delete('/contacts/:id', async (req, res) => {
             try {
-                await db.collection('contacts').findOneAndDelete({ name: req.body.name, number: req.body.number });
+                const contactId = req.params.id;
+                await db.collection('contacts').deleteOne({ "_\id": new ObjectId(contactId) });
                 res.send('Contact deleted!');
             } catch (err) {
                 res.status(500).send(err);
@@ -72,5 +71,4 @@ async function startServer() {
     }
 }
 
-// Start server and handle any errors outside the function
 startServer().catch(console.dir);

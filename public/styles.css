@@ -1,10 +1,14 @@
 body{
   background: rgb(15, 15, 15);
   color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5dvh;
 }
 
 input{
-  width: 30%;
+  width: 7rem;
   background-color: #ffffff;
   color: black;
   padding: 1rem;
@@ -31,4 +35,26 @@ button{
 
 button:hover {
   background-color: #c7c7ec;
+}
+
+.contacts {
+  border: 1px solid white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  width: 100%;
+  max-width: 80vw;
+  justify-content: center;
+}
+.contact {
+  border: 1px solid white; 
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-color: rgb(19, 19, 36);
+  
+
+}
+.contact:hover {
+  background-color: rgb(40, 40, 75)
 }

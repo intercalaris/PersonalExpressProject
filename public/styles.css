@@ -1,5 +1,6 @@
 body{
   background: rgb(15, 15, 15);
+  background-image: url(night-sky2.jpg);
   color: white;
   display: flex;
   flex-direction: column;

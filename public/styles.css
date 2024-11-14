@@ -26,6 +26,7 @@ input{
 }
 .submit {
   background-color: #ffffffda;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.2);
   border: none;
   color: rgb(0, 0, 0); 
   padding: 0.5rem 1rem;
@@ -60,7 +61,8 @@ button:hover {
   padding: 20px 10px 10px 10px;
   background-color: rgba(19, 19, 36, 0.759);
   gap: 5px;
-  min-width: 80px
+  min-width: 80px;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3), 0 0 7px rgba(255, 255, 255, 0.2);
 }
 
 .contact:hover {

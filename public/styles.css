@@ -1,6 +1,8 @@
 body{
   background: rgb(15, 15, 15);
-  background-image: url(night-sky2.jpg);
+  background-image: url(night-sky2.jpeg);
+  background-size: 100%;
+  background-position: top;
   color: white;
   display: flex;
   flex-direction: column;
@@ -10,7 +12,7 @@ body{
 
 input{
   width: 7rem;
-  background-color: #ffffff;
+  background-color: #ffffffda;
   color: black;
   padding: 0.5rem 1rem;
   margin: 0.5rem 0.5rem 1rem 0.5rem;
@@ -23,7 +25,7 @@ input{
   margin: 0.1rem;
 }
 .submit {
-  background-color: #ffffff;
+  background-color: #ffffffda;
   border: none;
   color: rgb(0, 0, 0); 
   padding: 0.5rem 1rem;
@@ -56,13 +58,13 @@ button:hover {
   display: flex;
   flex-direction: column;
   padding: 20px 10px 10px 10px;
-  background-color: rgb(19, 19, 36);
+  background-color: rgba(19, 19, 36, 0.759);
   gap: 5px;
   min-width: 80px
 }
 
 .contact:hover {
-  background-color: rgb(40, 40, 75)
+  background-color: rgba(40, 40, 75, 0.872);
 }
 .edit, .update {
   cursor: pointer;

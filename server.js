@@ -1,4 +1,5 @@
 const express = require('express');
+const methodOverride = require('method-override')
 const app = express();
 const bodyParser = require('body-parser');
 const { ObjectId, ServerApiVersion, MongoClient } = require('mongodb');
@@ -14,7 +15,7 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-// https://stackoverflow.com/questions/12901593/remove-record-by-id 
+
 async function startServer() {
     try {
         console.log("Attempting to connect to MongoDB...");
@@ -32,13 +33,19 @@ async function startServer() {
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
         app.use(express.static('public'));
+        app.use(methodOverride('_method'));
+
+        app.use((req, res, next) => {
+            console.log(`Received ${req.method} request for ${req.url}`);
+            next();
+        });
 
         app.get('/', async (req, res) => {
             try {
                 const contactsResult = await db.collection('contacts').find().toArray();
-                res.render('index.ejs', { contacts: contactsResult }); // left is how ejs references the array, right is constant established above 
-            } catch (err) {
-                console.error(err);
+                res.render('index.ejs', { contacts: contactsResult });
+            } catch (error) {
+                console.error(error);
             }
         });
 
@@ -51,18 +58,34 @@ async function startServer() {
                 });
                 console.log('Contact saved to database');
                 res.redirect('/');
-            } catch (err) {
-                console.error(err);
+            } catch (error) {
+                console.error(error);
+            }
+        });
+
+        app.put('/contacts/:id', async (req, res) => {
+            const contactId = req.params.id; 
+            const { name, number, email } = req.body;
+
+            try {
+                await db.collection('contacts').updateOne(
+                    { _id: new ObjectId(contactId)}, 
+                    { $set: { name: name, number: number, email: email } }
+                );
+                console.log('Contact updated successfully!');
+                res.redirect('/');
+            } catch (error) {
+                res.status(500).send({ message: "Error updating contact" });
             }
         });
 
         app.delete('/contacts/:id', async (req, res) => {
             try {
                 const contactId = req.params.id;
-                await db.collection('contacts').deleteOne({ "_\id": new ObjectId(contactId) });
+                await db.collection('contacts').deleteOne({ _id: new ObjectId(contactId) });
                 res.send('Contact deleted!');
-            } catch (err) {
-                res.status(500).send(err);
+            } catch (error) {
+                res.status(500).send(error);
             }
         });
 

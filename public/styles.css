@@ -67,6 +67,7 @@ button:hover {
 
 .contact:hover {
   background-color: rgba(40, 40, 75, 0.872);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.2);
 }
 .edit, .update {
   cursor: pointer;

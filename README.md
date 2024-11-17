@@ -1,7 +1,7 @@
 # PersonalExpress
-Demo: https://personalexpressproject.onrender.com/ 
+Demo: https://personalexpressproject.onrender.com/ (Render servers cool down when not in use- please wait up to 30 seconds after clicking link for it to load.)
 
-A full-stack contact manager using Node.js, Express, and MongoDB for adding, updating, and deleting contacts displayed as editable cards. Users can enter a name, phone number, and email as well as edit functionality enables quick updates via input fields.
+A full-stack contact manager using Node.js, Express, and MongoDB for adding, updating, and deleting contacts displayed as editable cards. Users can enter a name, phone number, and email. The app uses MongoDB ObjectIDs to query and manipulate database records in CRUD operations.
 
 Technical stack includes Node.js v14.x, Express v4.x, MongoDB with MongoDB Atlas, method-override v3.x for PUT method in the "edit" HTML form, and EJS v3.x as the template engine.
 

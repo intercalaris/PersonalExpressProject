@@ -8,3 +8,5 @@ Technical stack includes Node.js v14.x, Express v4.x, MongoDB with MongoDB Atlas
 Styling is a dark theme with responsive flexbox-centered layout and interactive elements with hover effects.
 
 To run, clone the repository, install dependencies, configure the MongoDB URI, and start the server with node server.js. Access at http://localhost:8000.
+
+![image](https://github.com/user-attachments/assets/1ca7f562-fd62-4451-95b7-aa34082147fa)

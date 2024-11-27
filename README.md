@@ -9,4 +9,5 @@ Styling is a dark theme with responsive flexbox-centered layout and interactive 
 
 To run, clone the repository, install dependencies, configure the MongoDB URI, and start the server with node server.js. Access at http://localhost:8000.
 
-![image](https://github.com/user-attachments/assets/1ca7f562-fd62-4451-95b7-aa34082147fa)
+![image](https://github.com/user-attachments/assets/f573e1a9-b84d-4abd-bafc-571f3bd82238)
+
